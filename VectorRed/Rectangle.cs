@@ -11,9 +11,10 @@ namespace VectorRed
 	class Rectangle : Figure 
 	{
 		private System.Drawing.Rectangle rectangle = new System.Drawing.Rectangle();
-		public Rectangle(Color color, Point leftPoint, Point rightPoint, String text): base(color, leftPoint, rightPoint, text)
+		public Rectangle(RectangleF bbox) : base(bbox)
 		{ }
-		public override void Draw()
+
+		public override void Draw(Graphics canvas)
 		{
 			throw new NotImplementedException();
 		}

@@ -9,11 +9,11 @@ namespace VectorRed
 {
 	class Actor : Figure
 	{
-		public Actor(Color color, Point leftPoint, Point rightPoint, string text) : base(color, leftPoint, rightPoint, text)
+		public Actor(RectangleF bbox) : base(bbox)
 		{
 		}
 
-		public override void Draw()
+		public override void Draw(Graphics canvas)
 		{
 			throw new NotImplementedException();
 		}
