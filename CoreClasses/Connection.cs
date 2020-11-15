@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace VectorRed
 {
 
-	struct ConnectionEnd
+	public struct ConnectionEnd
 	{
 		Figure LinkedFigure;
 		int PointIndex;
@@ -38,7 +38,7 @@ namespace VectorRed
 		}
 	}
 
-	class Connection : IHasOutline
+	public class Connection : IHasOutline
 	{
 		public ConnectionEnd Start;
 		public ConnectionEnd End;

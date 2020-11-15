@@ -6,23 +6,19 @@ using System.Threading.Tasks;
 
 namespace VectorRed
 {
-	class Diagramm
+	public static class Diagramm
 	{
-		private List<Figure> figures;
-		private List<Connection> connections;
-		private List<Figure> selectedF;
-		private List<Connection> selectedC;
-		public Diagramm() 
+		public static List<Figure> FIGURES = new List<Figure>();
+		public static List<Connection> CONNECTIONS = new List<Connection>();
+		public static List<Figure> SELECTED_F = new List<Figure>();
+		public static List<Connection> SELECTED_C = new List<Connection>();
+		
+		public static void Clear()
 		{
-			Figures = new List<Figure>();
-			Connections = new List<Connection>();
-			SelectedF = new List<Figure>();
-			SelectedC = new List<Connection>();
+			FIGURES.Clear();
+			CONNECTIONS.Clear();
+			SELECTED_F.Clear();
+			SELECTED_C.Clear();
 		}
-
-		internal List<Figure> Figures { get => figures; set => figures = value; }
-		internal List<Connection> Connections { get => connections; set => connections = value; }
-		internal List<Figure> SelectedF { get => selectedF; set => selectedF = value; }
-		internal List<Connection> SelectedC { get => selectedC; set => selectedC = value; }
 	}
 }
