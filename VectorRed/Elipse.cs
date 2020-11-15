@@ -7,16 +7,21 @@ using System.Threading.Tasks;
 
 namespace VectorRed
 {
-	class Elipse : Figure
+	class Ellipse : Figure, IHasOutline, IHasFilling
 	{
+
 		private System.Drawing.Rectangle elipse = new System.Drawing.Rectangle();
-		public Elipse(Color color, Point leftPoint, Point rightPoint, string text) : base(color, leftPoint, rightPoint, text)
+		public Ellipse(RectangleF bbox) : base(bbox)
 		{
 		}
 
-		public override void Draw()
+		public Pen Outline { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+		public Brush Filling { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+		public override void Draw(Graphics canvas)
 		{
 			throw new NotImplementedException();
 		}
-	}
+
+
 }
