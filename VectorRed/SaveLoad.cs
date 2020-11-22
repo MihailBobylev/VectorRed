@@ -10,18 +10,14 @@ namespace VectorRed
 {
 	static public class SaveLoad
 	{
-		static public void Save(String fileName)
+		static public void Save(Diagramm d, Stream target)
 		{
 			BinaryFormatter binFormat = new BinaryFormatter();
-			using (FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate) )
-			{
-				binFormat.Serialize(fs, Diagramm.FIGURES);
-				binFormat.Serialize(fs, Diagramm.CONNECTIONS);
-				fs.Close();
-			}
+			binFormat.Serialize(target, d.Content.Figures);
+			binFormat.Serialize(target, d.Content.Connections);
 		}
 
-		static public void Load()
+		static public void Load(Stream source, Diagramm d)
 		{
 
 		}

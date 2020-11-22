@@ -19,22 +19,19 @@ namespace VectorRed
 
 		public PointF ToGlobal(PointF local) 
 		{
-			float x = BoundingBox.X + local.X;
-			float y = BoundingBox.Y + local.Y;
+			float x = BoundingBox.X + local.X * BoundingBox.Width;
+			float y = BoundingBox.Y + local.Y * BoundingBox.Height;
 			return new PointF(x,y);
 		}
 
 		public PointF ToLocal(PointF global) 
 		{
-			float x = global.X - BoundingBox.X;
-			float y = global.Y - BoundingBox.Y;
-			if (x > 0 && x < BoundingBox.Width && y > 0 && y < BoundingBox.Height)
-				return new PointF(x, y);
-			else
-				return new PointF(-1, -1);
+			float x = (global.X - BoundingBox.X) / BoundingBox.Width;
+			float y = (global.Y - BoundingBox.Y) / BoundingBox.Height;
+			return new PointF(x, y);
 		}
 
-		public abstract void Draw(System.Drawing.Graphics canvas);
+		public abstract void Draw(Graphics canvas);
 
 	}
 
