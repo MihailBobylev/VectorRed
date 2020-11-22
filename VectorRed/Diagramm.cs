@@ -10,9 +10,16 @@ namespace VectorRed
 	{
 		public List<Figure> Figures = new List<Figure>();
 		public List<Connection> Connections = new List<Connection>();
+
+		public Content(List<Figure> figures, List<Connection> connections)
+		{
+			Figures = figures;
+			Connections = connections;
+		}
+
 		public Content Clone()
 		{
-
+			return new Content(Figures, Connections);
 		}
 
 		public void UnbindConnections()
@@ -30,8 +37,8 @@ namespace VectorRed
 		
 		public static void Clear()
 		{
-			FIGURES.Clear();
-			CONNECTIONS.Clear();
+			//
+			//
 			SELECTED_F.Clear();
 			SELECTED_C.Clear();
 		}
