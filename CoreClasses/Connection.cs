@@ -45,5 +45,6 @@ namespace VectorRed
 
 		public Connection() { }
 		public Pen Outline { get; set; }
+		
 	}
 }

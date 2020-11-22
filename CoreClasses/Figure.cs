@@ -19,8 +19,8 @@ namespace VectorRed
 
 		public PointF ToGlobal(PointF local) 
 		{
-			float x = BoundingBox.X + local.X * BoundingBox.Width;
-			float y = BoundingBox.Y + local.Y * BoundingBox.Height;
+			float x = (BoundingBox.X + local.X) * BoundingBox.Width;
+			float y = (BoundingBox.Y + local.Y) * BoundingBox.Height;
 			return new PointF(x,y);
 		}
 
