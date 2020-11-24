@@ -9,12 +9,13 @@ namespace VectorRed
 {
 	class Ellipse : Figure, IHasOutline, IHasFilling
 	{
-
+		Pen outline;
 		public Ellipse(RectangleF bbox) : base(bbox)
 		{
+			outline = new Pen(Color.Black);
 		}
 
-		public Pen Outline { get => Outline; set { Outline = value; } }
+		public Pen Outline { get => outline; set { outline = value; } }
 		public Brush Filling { get => Filling; set { Filling = value; } }
 
 		public override void Draw(Graphics canvas)

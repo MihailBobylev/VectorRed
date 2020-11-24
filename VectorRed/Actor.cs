@@ -8,13 +8,14 @@ using System.Threading.Tasks;
 namespace VectorRed
 {
 	class Actor : Figure
-	{
-		public Actor(RectangleF bbox) : base(bbox)
+    {
+        Pen outline;
+        public Actor(RectangleF bbox) : base(bbox)
 		{
-		}
+            outline = new Pen(Color.Black);
+        }
 
-		public Pen Outline { get => Outline; set { Outline = value; } }
-		public Brush Filling { get => Filling; set { Filling = value; } }
+        public Pen Outline { get => outline; set { outline = value; } }
 
 		public override void Draw(Graphics canvas)
 		{
