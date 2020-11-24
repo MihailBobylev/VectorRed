@@ -21,6 +21,7 @@ namespace VectorRed
 		Point PrevPoint;
 		Point CurrentPoint;
 		bool press = false;
+		bool figureClick = false;
 		Figure figure;
 		
 
@@ -58,12 +59,63 @@ namespace VectorRed
 
 		private void btnRectangle_Click(object sender, EventArgs e)
 		{
+			figureClick = true;
 			figure = new MRectangle(new RectangleF(0,0,0,0));
+			Block();
 		}
 
 		private void Form1_Load(object sender, EventArgs e)
 		{
 			
+		}
+
+		private void btnEllipse_Click(object sender, EventArgs e)
+		{
+			figureClick = true;
+			figure = new Ellipse(new RectangleF(0, 0, 0, 0));
+			Block();
+		}
+
+		private void btnConnection_Click(object sender, EventArgs e)
+		{
+			Block();
+		}
+
+		private void btnActor_Click(object sender, EventArgs e)
+		{
+			figureClick = true;
+			figure = new Actor(new RectangleF(0, 0, 0, 0));
+			Block();
+		}
+
+		private void btnCursor_Click(object sender, EventArgs e)
+		{
+			Block();
+			figureClick = false;
+		}
+
+
+		private void Block()
+		{
+			IHasOutline inter = figure as IHasOutline;
+			if(inter is null)
+			{
+				btnColor.Enabled = false;
+			}
+			else
+			{
+				btnColor.Enabled = true;
+			}
+
+			IHasFilling inter1 = figure as IHasFilling;
+			if (inter1 == null)
+			{
+				btnFill.Enabled = false;
+			}
+			else
+			{
+				btnFill.Enabled = true;
+			}
 		}
 	}
 }

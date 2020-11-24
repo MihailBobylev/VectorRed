@@ -8,20 +8,30 @@ using System.Threading.Tasks;
 
 namespace VectorRed
 {
-	class MRectangle : Figure, IHasOutline, IHasFilling
+	class MRectangle : Figure, IHasOutline, IHasFilling, IHasText
 	{
 
+		Pen outline;
+		String text;
+		Font font;
+		Brush brush;
 		public MRectangle(RectangleF bbox) : base(bbox)
 		{
+			outline = new Pen(Color.Black);
+			brush = Brushes.Red;
 		}
+		public Pen Outline { get => outline; set => outline = value; }
+		public Brush Filling { get => brush; set => brush = value; }
 
-		public Brush Filling { get => Filling; set { Filling = value; } }
-		public Pen Outline { get => Outline; set { Outline = value; } }
+		public Font Font { get => font; set => font = value; }
+		public string Text { get => text; set => text = value; }
 
 		public override void Draw(Graphics canvas)
 		{
-			//Pen pen = new Pen(Color.Black);
-			canvas.DrawRectangle(pen, Rectangle.Round(BoundingBox));
+			canvas.DrawRectangle(Outline, Rectangle.Round(BoundingBox));
+			Text = "Sdaadsad";
+			Font = SystemFonts.DefaultFont;
+			canvas.DrawString(Text, Font, Filling, BoundingBox);
 		}
 	}
 }
