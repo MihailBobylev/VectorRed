@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace VectorRed
 {
-	public abstract class Figure
+	public abstract class Figure : IHasOutline, IHasFilling, IHasText
 	{
 		public RectangleF BoundingBox { get; set; }
 		public Figure (RectangleF bbox)
@@ -16,6 +16,10 @@ namespace VectorRed
 		}
 		protected List<PointF> FConnectionPoints = new List<PointF>();
 		public IReadOnlyList<PointF> ConnectionPoints { get => FConnectionPoints; }
+		public Pen Outline { get; set; }
+		public Brush Filling { get; set; }
+		public Font Font { get; set; }
+		public string Text { get; set; }
 
 		public PointF ToGlobal(PointF local) 
 		{
@@ -32,6 +36,11 @@ namespace VectorRed
 		}
 
 		public abstract void Draw(Graphics canvas);
+
+		public void Remove(Graphics canvas)
+		{
+			canvas.FillRectangle(Brushes.White, BoundingBox.X - 2, BoundingBox.Y - 2, BoundingBox.Width + 3, BoundingBox.Height + 3);
+		}
 
 	}
 

@@ -9,14 +9,10 @@ namespace VectorRed
 {
 	class Actor : Figure
     {
-        Pen outline;
         public Actor(RectangleF bbox) : base(bbox)
 		{
-            outline = new Pen(Color.Black);
+            Outline = new Pen(Color.Black);
         }
-
-        public Pen Outline { get => outline; set { outline = value; } }
-
 		public override void Draw(Graphics canvas)
 		{
             //разметка
