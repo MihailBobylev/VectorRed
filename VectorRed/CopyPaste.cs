@@ -11,9 +11,9 @@ namespace VectorRed
 	{
 		static public void Copy()
 		{
-			Clipboard.SetDataObject(Diagramm.SELECTED_F);
+			//Clipboard.SetDataObject();
 
-			Clipboard.SetDataObject(Diagramm.SELECTED_C);
+			//Clipboard.SetDataObject();
 		}
 
 		static public void Paste()

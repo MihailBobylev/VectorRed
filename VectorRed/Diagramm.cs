@@ -28,19 +28,30 @@ namespace VectorRed
 		}
 	}
 
-	public class Diagramm
+	public  class Diagramm
 	{
 		public Content Content;
 		public Content Selection;
-		public static List<Figure> SELECTED_F = new List<Figure>();
-		public static List<Connection> SELECTED_C = new List<Connection>();
-		
-		public static void Clear()
+
+		public Diagramm()
 		{
-			//
-			//
-			SELECTED_F.Clear();
-			SELECTED_C.Clear();
+			Content = new Content(new List<Figure>(), new List<Connection>());
+			Selection = new Content(new List<Figure>(), new List<Connection>());
 		}
+		public  void Clear()
+		{
+			Content.Figures.Clear();
+			Content.Connections.Clear();
+			Selection.Figures.Clear();
+			Selection.Connections.Clear();
+		}
+
+		public  void ClearSelection()
+		{
+			Content.Figures.Clear();
+			Content.Connections.Clear();
+		}
+
+
 	}
 }

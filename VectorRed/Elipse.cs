@@ -7,19 +7,16 @@ using System.Threading.Tasks;
 
 namespace VectorRed
 {
-	class Ellipse : Figure, IHasOutline, IHasFilling
+	class Ellipse : Figure, IHasOutline
 	{
-		Pen outline;
 		public Ellipse(RectangleF bbox) : base(bbox)
 		{
-			outline = new Pen(Color.Black);
+			Outline = new Pen(Color.Black);
 		}
-
-		public Pen Outline { get => outline; set { outline = value; } }
-		public Brush Filling { get => Filling; set { Filling = value; } }
 
 		public override void Draw(Graphics canvas)
 		{
+			canvas.FillEllipse(Filling, BoundingBox);
 			canvas.DrawEllipse(Outline, Rectangle.Round(BoundingBox));
 		}
 	}
