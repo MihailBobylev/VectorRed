@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
 			this.canvasBox = new System.Windows.Forms.PictureBox();
 			this.btnRectangle = new System.Windows.Forms.Button();
@@ -49,6 +50,9 @@
 			this.btnColorOutline = new System.Windows.Forms.Button();
 			this.btnFill = new System.Windows.Forms.Button();
 			this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+			this.btn_Delete = new System.Windows.Forms.Button();
+			this.btn_Select = new System.Windows.Forms.Button();
+			this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
 			((System.ComponentModel.ISupportInitialize)(this.canvasBox)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.nWidth)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.nHeight)).BeginInit();
@@ -56,7 +60,10 @@
 			// 
 			// canvasBox
 			// 
-			this.canvasBox.BackColor = System.Drawing.Color.White;
+			this.canvasBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.canvasBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
 			this.canvasBox.Location = new System.Drawing.Point(12, 68);
 			this.canvasBox.Name = "canvasBox";
 			this.canvasBox.Size = new System.Drawing.Size(1014, 507);
@@ -65,12 +72,13 @@
 			this.canvasBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
 			this.canvasBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
 			this.canvasBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
+			this.canvasBox.Resize += new System.EventHandler(this.canvasBox_Resize);
 			// 
 			// btnRectangle
 			// 
 			this.btnRectangle.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRectangle.BackgroundImage")));
 			this.btnRectangle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-			this.btnRectangle.Location = new System.Drawing.Point(415, 12);
+			this.btnRectangle.Location = new System.Drawing.Point(482, 12);
 			this.btnRectangle.Name = "btnRectangle";
 			this.btnRectangle.RightToLeft = System.Windows.Forms.RightToLeft.No;
 			this.btnRectangle.Size = new System.Drawing.Size(60, 50);
@@ -82,7 +90,7 @@
 			// 
 			this.btnEllipse.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEllipse.BackgroundImage")));
 			this.btnEllipse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-			this.btnEllipse.Location = new System.Drawing.Point(481, 12);
+			this.btnEllipse.Location = new System.Drawing.Point(548, 12);
 			this.btnEllipse.Name = "btnEllipse";
 			this.btnEllipse.RightToLeft = System.Windows.Forms.RightToLeft.No;
 			this.btnEllipse.Size = new System.Drawing.Size(60, 50);
@@ -94,7 +102,7 @@
 			// 
 			this.btnConnection.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnConnection.BackgroundImage")));
 			this.btnConnection.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-			this.btnConnection.Location = new System.Drawing.Point(547, 12);
+			this.btnConnection.Location = new System.Drawing.Point(614, 12);
 			this.btnConnection.Name = "btnConnection";
 			this.btnConnection.RightToLeft = System.Windows.Forms.RightToLeft.No;
 			this.btnConnection.Size = new System.Drawing.Size(60, 50);
@@ -106,7 +114,7 @@
 			// 
 			this.btnActor.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnActor.BackgroundImage")));
 			this.btnActor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-			this.btnActor.Location = new System.Drawing.Point(613, 12);
+			this.btnActor.Location = new System.Drawing.Point(680, 12);
 			this.btnActor.Name = "btnActor";
 			this.btnActor.RightToLeft = System.Windows.Forms.RightToLeft.No;
 			this.btnActor.Size = new System.Drawing.Size(60, 50);
@@ -134,6 +142,7 @@
 			this.btnLoad.TabIndex = 9;
 			this.btnLoad.Text = "Загрузить";
 			this.btnLoad.UseVisualStyleBackColor = true;
+			this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
 			// 
 			// btnSave
 			// 
@@ -144,6 +153,7 @@
 			this.btnSave.TabIndex = 10;
 			this.btnSave.Text = "Сохранить";
 			this.btnSave.UseVisualStyleBackColor = true;
+			this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
 			// 
 			// btnCursor
 			// 
@@ -159,6 +169,7 @@
 			// 
 			// tText
 			// 
+			this.tText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.tText.Location = new System.Drawing.Point(1032, 84);
 			this.tText.Name = "tText";
 			this.tText.Size = new System.Drawing.Size(124, 20);
@@ -166,6 +177,7 @@
 			// 
 			// btnConfirm
 			// 
+			this.btnConfirm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.btnConfirm.Location = new System.Drawing.Point(1032, 313);
 			this.btnConfirm.Name = "btnConfirm";
@@ -189,6 +201,7 @@
 			// 
 			// lbText
 			// 
+			this.lbText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.lbText.AutoSize = true;
 			this.lbText.Location = new System.Drawing.Point(1032, 68);
 			this.lbText.Name = "lbText";
@@ -198,6 +211,7 @@
 			// 
 			// lbWidth
 			// 
+			this.lbWidth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.lbWidth.AutoSize = true;
 			this.lbWidth.Location = new System.Drawing.Point(1032, 111);
 			this.lbWidth.Name = "lbWidth";
@@ -207,6 +221,7 @@
 			// 
 			// nWidth
 			// 
+			this.nWidth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.nWidth.Location = new System.Drawing.Point(1032, 127);
 			this.nWidth.Maximum = new decimal(new int[] {
             1000,
@@ -229,6 +244,7 @@
 			// 
 			// label1
 			// 
+			this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.label1.AutoSize = true;
 			this.label1.Location = new System.Drawing.Point(1032, 159);
 			this.label1.Name = "label1";
@@ -238,6 +254,7 @@
 			// 
 			// nHeight
 			// 
+			this.nHeight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.nHeight.Location = new System.Drawing.Point(1032, 175);
 			this.nHeight.Maximum = new decimal(new int[] {
             1000,
@@ -260,6 +277,7 @@
 			// 
 			// btnColorOutline
 			// 
+			this.btnColorOutline.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnColorOutline.FlatAppearance.BorderSize = 5;
 			this.btnColorOutline.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnColorOutline.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -273,6 +291,7 @@
 			// 
 			// btnFill
 			// 
+			this.btnFill.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnFill.FlatAppearance.BorderSize = 5;
 			this.btnFill.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnFill.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -284,11 +303,44 @@
 			this.btnFill.UseVisualStyleBackColor = true;
 			this.btnFill.Click += new System.EventHandler(this.btnFill_Click_1);
 			// 
+			// btn_Delete
+			// 
+			this.btn_Delete.BackColor = System.Drawing.Color.White;
+			this.btn_Delete.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Delete.BackgroundImage")));
+			this.btn_Delete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+			this.btn_Delete.Location = new System.Drawing.Point(745, 12);
+			this.btn_Delete.Name = "btn_Delete";
+			this.btn_Delete.RightToLeft = System.Windows.Forms.RightToLeft.No;
+			this.btn_Delete.Size = new System.Drawing.Size(60, 50);
+			this.btn_Delete.TabIndex = 23;
+			this.btn_Delete.UseVisualStyleBackColor = false;
+			this.btn_Delete.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btn_Delete_MouseClick);
+			// 
+			// btn_Select
+			// 
+			this.btn_Select.BackColor = System.Drawing.Color.White;
+			this.btn_Select.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Select.BackgroundImage")));
+			this.btn_Select.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+			this.btn_Select.Location = new System.Drawing.Point(416, 12);
+			this.btn_Select.Name = "btn_Select";
+			this.btn_Select.RightToLeft = System.Windows.Forms.RightToLeft.No;
+			this.btn_Select.Size = new System.Drawing.Size(60, 50);
+			this.btn_Select.TabIndex = 24;
+			this.btn_Select.UseVisualStyleBackColor = false;
+			this.btn_Select.Click += new System.EventHandler(this.btn_Select_Click);
+			// 
+			// contextMenuStrip1
+			// 
+			this.contextMenuStrip1.Name = "contextMenuStrip1";
+			this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1168, 587);
+			this.Controls.Add(this.btn_Select);
+			this.Controls.Add(this.btn_Delete);
 			this.Controls.Add(this.btnFill);
 			this.Controls.Add(this.btnColorOutline);
 			this.Controls.Add(this.nHeight);
@@ -308,6 +360,7 @@
 			this.Controls.Add(this.btnEllipse);
 			this.Controls.Add(this.btnRectangle);
 			this.Controls.Add(this.canvasBox);
+			this.DoubleBuffered = true;
 			this.Name = "Form1";
 			this.Text = "Form1";
 			this.Load += new System.EventHandler(this.Form1_Load);
@@ -341,6 +394,9 @@
 		private System.Windows.Forms.Button btnColorOutline;
 		private System.Windows.Forms.Button btnFill;
 		private System.Windows.Forms.ColorDialog colorDialog1;
+		private System.Windows.Forms.Button btn_Delete;
+		private System.Windows.Forms.Button btn_Select;
+		private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
 	}
 }
 

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace VectorRed
 {
+	[Serializable]
 	public class Content
 	{
 		public List<Figure> Figures = new List<Figure>();
@@ -28,6 +29,7 @@ namespace VectorRed
 		}
 	}
 
+	[Serializable]
 	public  class Diagramm
 	{
 		public Content Content;
@@ -48,8 +50,8 @@ namespace VectorRed
 
 		public  void ClearSelection()
 		{
-			Content.Figures.Clear();
-			Content.Connections.Clear();
+			Selection.Figures.Clear();
+			Selection.Connections.Clear();
 		}
 
 
