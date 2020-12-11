@@ -7,17 +7,22 @@ using System.Threading.Tasks;
 
 namespace VectorRed
 {
+	[Serializable]
 	class Ellipse : Figure, IHasOutline
 	{
 		public Ellipse(RectangleF bbox) : base(bbox)
 		{
-			Outline = new Pen(Color.Black);
+			ColorPen = Color.Black;
+			ColorBrush = Color.White;
+			Text = "dasdas";
+			Font = SystemFonts.DefaultFont;
 		}
 
-		public override void Draw(Graphics canvas)
+		public override void Draw(BufferedGraphics canvas)
 		{
-			canvas.FillEllipse(Filling, BoundingBox);
-			canvas.DrawEllipse(Outline, Rectangle.Round(BoundingBox));
+			canvas.Graphics.FillEllipse(Filling, BoundingBox);
+			canvas.Graphics.DrawEllipse(Outline, Rectangle.Round(BoundingBox));
+			canvas.Graphics.DrawString(Text, Font, Brushes.Black, BoundingBox);
 		}
 	}
 }

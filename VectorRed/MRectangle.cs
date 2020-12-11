@@ -8,21 +8,23 @@ using System.Threading.Tasks;
 
 namespace VectorRed
 {
+	[Serializable]
 	class MRectangle : Figure
 	{
 		public MRectangle(RectangleF bbox) : base(bbox)
 		{
-			Outline = new Pen(Color.Black);
-			Filling = Brushes.Red;
+			ColorPen = Color.Black;
+			ColorBrush = Color.White;
 			Text = "dasdas";
 			Font = SystemFonts.DefaultFont;
 		}
 
-		public override void Draw(Graphics canvas)
+		public override void Draw(BufferedGraphics canvas)
 		{
-			canvas.FillRectangle(Filling, BoundingBox);
-			canvas.DrawRectangle(Outline, Rectangle.Round(BoundingBox));
-			canvas.DrawString(Text, Font, Brushes.Black, BoundingBox);
+			canvas.Graphics.FillRectangle(Filling, BoundingBox);
+			canvas.Graphics.DrawRectangle(Outline, Rectangle.Round(BoundingBox));
+			canvas.Graphics.DrawString(Text, Font, Brushes.Black, BoundingBox);
+		
 		}
 	}
 }

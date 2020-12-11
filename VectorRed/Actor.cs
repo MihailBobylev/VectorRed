@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System; 
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -7,13 +7,18 @@ using System.Threading.Tasks;
 
 namespace VectorRed
 {
-	class Actor : Figure
+    [Serializable]
+    class Actor : Figure
     {
         public Actor(RectangleF bbox) : base(bbox)
 		{
-            Outline = new Pen(Color.Black);
+            ColorPen = Color.Black;
+            ColorBrush = Color.White;
+            Text = "dasdas";
+            Font = SystemFonts.DefaultFont;
         }
-		public override void Draw(Graphics canvas)
+
+		public override void Draw(BufferedGraphics canvas)
 		{
             //разметка
             float centerX = BoundingBox.X + BoundingBox.Width / 2;//Середина рисунка по вертикали
@@ -27,11 +32,12 @@ namespace VectorRed
             //руки
             float handY = BoundingBox.Y + BoundingBox.Height / 10 * 4;
 
-            canvas.DrawEllipse(Outline, headX, headY, headD, headD);//голова
-            canvas.DrawLine(Outline, centerX, BoundingBox.Y + headD, centerX, bodyY);//туловище
-            canvas.DrawLine(Outline, BoundingBox.X, handY, BoundingBox.X + BoundingBox.Width, handY);//руки
-            canvas.DrawLine(Outline, BoundingBox.X, BoundingBox.Y + BoundingBox.Height, centerX, bodyY);//левая нога
-            canvas.DrawLine(Outline, centerX, bodyY, BoundingBox.X + BoundingBox.Width, BoundingBox.Y + BoundingBox.Height);//правая нога
+            canvas.Graphics.DrawEllipse(Outline, headX, headY, headD, headD);//голова
+            canvas.Graphics.DrawLine(Outline, centerX, BoundingBox.Y + headD, centerX, bodyY);//туловище
+            canvas.Graphics.DrawLine(Outline, BoundingBox.X, handY, BoundingBox.X + BoundingBox.Width, handY);//руки
+            canvas.Graphics.DrawLine(Outline, BoundingBox.X, BoundingBox.Y + BoundingBox.Height, centerX, bodyY);//левая нога
+            canvas.Graphics.DrawLine(Outline, centerX, bodyY, BoundingBox.X + BoundingBox.Width, BoundingBox.Y + BoundingBox.Height);//правая нога
+            canvas.Graphics.DrawString(Text, Font, Brushes.Black, BoundingBox.X + BoundingBox.Width / 2, BoundingBox.Y + BoundingBox.Height);
         }
 	}
 }

@@ -9,12 +9,14 @@ namespace VectorRed
 {
 	public interface IHasOutline
 	{
-		Pen Outline { get; set; }
+		Color ColorPen { get; set; }
+		Pen Outline { get; }
 	}
 
 	public interface IHasFilling
 	{
-		Brush Filling { get; set; }
+		Color ColorBrush { get; set; }
+		Brush Filling { get; }
 	}
 
 	public interface IHasText
