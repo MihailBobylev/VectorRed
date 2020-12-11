@@ -204,9 +204,10 @@ namespace VectorRed
 								idx = i;
 								len = LengthLine(f.ConnectionPoints[i], hook);
 							}
-
+							
 						}
-						connection.End = new ConnectionEnd(f, idx);					
+						connection.End = new ConnectionEnd(f, idx);
+						break;
 					}
 					else
 					{
@@ -328,8 +329,11 @@ namespace VectorRed
 			figureMoved = false;
 			figureDraw = true;
 			figureClick = false;
+			connectionDraw = false;
 			delete = false;
 			select = false;
+			selectMove = false;
+			connectionDown = false;
 			figure = new MRectangle(new RectangleF(0,0,0,0));
 			drawFigure = new MRectangle(new RectangleF(0, 0, 0, 0));
 		}
@@ -341,6 +345,8 @@ namespace VectorRed
 			connectionDraw = false;
 			delete = false;
 			select = false;
+			connectionDown = false;
+			selectMove = false;
 			figure = new Ellipse(new RectangleF(0, 0, 0, 0));
 			drawFigure = new Ellipse(new RectangleF(0, 0, 0, 0));
 
@@ -353,6 +359,8 @@ namespace VectorRed
 			connectionDraw = true;
 			delete = false;
 			select = false;
+			connectionDown = false;
+			selectMove = false;
 			connection = new Connection();
 		}
 		private void btnActor_Click(object sender, EventArgs e)
@@ -363,6 +371,8 @@ namespace VectorRed
 			connectionDraw = false;
 			delete = false;
 			select = false;
+			connectionDown = false;
+			selectMove = false;
 			figure = new Actor(new RectangleF(0, 0, 0, 0));
 			drawFigure = new Actor(new RectangleF(0, 0, 0, 0));
 		}
