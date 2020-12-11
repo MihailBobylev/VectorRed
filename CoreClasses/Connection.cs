@@ -61,7 +61,26 @@ namespace VectorRed
 		public Color ColorPen { get; set; }
 		public Pen Outline { get => new Pen(ColorPen); }
 
-		public RectangleF BoundingBox { get => new RectangleF(Start.Target.X, Start.Target.Y, End.Target.X - Start.Target.X, End.Target.Y - Start.Target.Y); }
+		public RectangleF BoundingBox 
+		{
+			get
+			{
+				Size size = new Size((int)Math.Abs(End.Target.X - Start.Target.X), (int)Math.Abs(End.Target.Y - Start.Target.Y));
+				PointF point = new PointF();
+				if (End.Target.X < Start.Target.X)
+				{
+					point.X = End.Target.X;
+				}
+				else point.X = Start.Target.X;
+				if (End.Target.Y < Start.Target.Y)
+				{
+					point.Y = End.Target.Y;
+				}
+				else point.Y = Start.Target.Y;
+				return new RectangleF(point, size);
+			}
+		
+		}
 
 		public void Draw(BufferedGraphics canvas) 
 		{
